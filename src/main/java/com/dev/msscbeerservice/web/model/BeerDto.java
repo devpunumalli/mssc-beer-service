@@ -4,28 +4,48 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.stereotype.Component;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Null;
+import javax.validation.constraints.Positive;
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 import java.util.UUID;
 
+/**
+ * @author devpu
+ */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Component
 public class BeerDto {
-
+@Null
     private UUID id;
+
+@Null
     private Integer version;
-            private OffsetDateTime createdDate;
-            private OffsetDateTime lastModifiedDate;
-            private String beerName;
-            private Integer upc;
+@Null
+    private OffsetDateTime createdDate;
+@Null
+    private OffsetDateTime lastModifiedDate;
 
-            private BeerStyleEnum beerStyle;
+    @NotBlank
+    private String beerName;
 
-            private BigDecimal price;
-            private Integer quantityOnHand;
+    @NotNull
+    @Positive
+    private Integer upc;
+    @NotBlank
+    private BeerStyleEnum beerStyle;
+
+    @NotBlank
+    private BigDecimal price;
+    @NotBlank
+    private Integer quantityOnHand;
 
 
 }
