@@ -39,12 +39,12 @@ public class BeerDto {
     @NotNull
     @Positive
     private Integer upc;
-    @NotBlank
+
     private BeerStyleEnum beerStyle;
 
-    @NotBlank
+
     private BigDecimal price;
-    @NotBlank
+    @NotNull
     private Integer quantityOnHand;
 
 

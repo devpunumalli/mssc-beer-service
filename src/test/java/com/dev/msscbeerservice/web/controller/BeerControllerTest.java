@@ -1,6 +1,7 @@
 package com.dev.msscbeerservice.web.controller;
 
 import com.dev.msscbeerservice.web.model.BeerDto;
+import com.dev.msscbeerservice.web.model.BeerStyleEnum;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
@@ -11,6 +12,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.UUID;
 
@@ -29,15 +31,14 @@ class BeerControllerTest {
     void getBeerById() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/beer/" + UUID.randomUUID()
                 .toString())
-                .accept(MediaType.APPLICATION_JSON))
+                                .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
     }
 
     @Test
     void saveBeer() throws Exception {
-        BeerDto beerDto = BeerDto.builder()
-                .build();
-        String jsonObjStr = objectMapper.writeValueAsString(beerDto);
+        BeerDto beerDto = BeerDto.builder().beerName("dev").beerStyle(BeerStyleEnum.LAGER).price(new BigDecimal(123.00)).upc(123).quantityOnHand(1).build();
+String jsonObjStr = objectMapper.writeValueAsString(beerDto);
         mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/beer/")
                                 .content(jsonObjStr)
                                 .contentType(MediaType.APPLICATION_JSON))
@@ -47,7 +48,8 @@ class BeerControllerTest {
 
     @Test
     void updateBeer() throws Exception {
-        BeerDto beerDto = BeerDto.builder().build();
+        BeerDto beerDto = BeerDto.builder().beerName("dev").beerStyle(BeerStyleEnum.LAGER).price(new BigDecimal(123.00)).upc(123).quantityOnHand(1).build();
+
         String jsonObjStr = objectMapper.writeValueAsString(beerDto);
         mockMvc.perform(MockMvcRequestBuilders.put("/api/v1/beer/"+UUID.randomUUID().toString())
                                 .content(jsonObjStr)

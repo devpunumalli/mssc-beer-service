@@ -1,0 +1,12 @@
+package com.dev.msscbeerservice.web.mapper;
+
+import com.dev.msscbeerservice.domain.Beer;
+import com.dev.msscbeerservice.web.model.BeerDto;
+import org.mapstruct.Mapper;
+
+@Mapper(uses = DateMapper.class)
+public interface BeerMapper {
+
+    public Beer toBeer(BeerDto beerDto);
+    public BeerDto toBeerDto(Beer beer);
+}
