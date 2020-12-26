@@ -24,7 +24,7 @@ import java.util.UUID;
 @Builder
 @Component
 public class BeerDto {
-@Null
+@NotNull
     private UUID id;
 
 @Null
