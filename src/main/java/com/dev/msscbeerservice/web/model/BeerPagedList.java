@@ -23,6 +23,7 @@ public class BeerPagedList extends PageImpl<BeerDto> {
                          @JsonProperty("first") boolean first,
                          @JsonProperty("numberOfElements") int numberOfElements) {
 
+
         super(content, PageRequest.of(number, size), totalElements);
     }
 
