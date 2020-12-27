@@ -59,7 +59,7 @@ class BeerControllerTest {
         validBeer = BeerDto.builder().id(UUID.randomUUID())
                 .beerName("Beer1")
                 .beerStyle(BeerStyleEnum.LAGER).price(new BigDecimal(12.33))
-                .upc(134).quantityOnHand(10)
+                .upc("123").quantityOnHand(10)
                 .build();
         return validBeer;
     }
