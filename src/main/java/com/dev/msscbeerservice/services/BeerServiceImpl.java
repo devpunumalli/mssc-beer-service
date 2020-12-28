@@ -59,6 +59,7 @@ public class BeerServiceImpl implements BeerService {
 
     @Override
     @Cacheable(cacheNames = "beerListCache" ,condition = "#showInventoryOnHand==false")
+
     public BeerPagedList listBeers(String beerName, BeerStyleEnum beerStyle, Pageable pageRequest, Boolean showInventoryOnHand) {
         BeerPagedList beerPagedList;
         Page<Beer> beersPage;
