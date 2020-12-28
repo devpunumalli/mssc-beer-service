@@ -20,28 +20,27 @@ import java.util.UUID;
 public class Beer {
 
 
-
     @Id
     @GeneratedValue(generator = "UUID")
-    @GenericGenerator(name = "UUID",strategy ="org.hibernate.id.UUIDGenerator")
-    @Type(type="org.hibernate.type.UUIDCharType")
-    @Column(length = 36, columnDefinition = "varchar(36)",updatable = false,nullable = false)
+    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+    @Type(type = "org.hibernate.type.UUIDCharType")
+    @Column(length = 36, columnDefinition = "varchar(36)", updatable = false, nullable = false)
 
     private UUID id;
-@Version
-private Long version;
-@CreationTimestamp
-@Column(updatable = false)
-private Timestamp createdDate;
+    @Version
+    private Long version;
+    @CreationTimestamp
+    @Column(updatable = false)
+    private Timestamp createdDate;
 
-@UpdateTimestamp
-@Column(insertable = false)
-private Timestamp lastModifiedDate;
+    @UpdateTimestamp
+    @Column(insertable = false)
+    private Timestamp lastModifiedDate;
 
-private String beerName;
-private String beerStyle;
+    private String beerName;
+    private String beerStyle;
 
-@Column(unique = true)
+    @Column(unique = true)
     private String upc;
 
     private BigDecimal price;

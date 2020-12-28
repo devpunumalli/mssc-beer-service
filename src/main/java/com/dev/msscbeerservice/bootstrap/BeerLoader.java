@@ -12,7 +12,7 @@ import java.util.UUID;
 @Component
 public class BeerLoader implements CommandLineRunner {
 
-    public static final UUID BEER_ID_1 =UUID.fromString("0a818933-087d-47f2-ad83-2f986ed087eb");
+    public static final UUID BEER_ID_1 = UUID.fromString("0a818933-087d-47f2-ad83-2f986ed087eb");
     private final BeerRepository beerRepository;
     public static final String BEER_1_UPC = "0631234200036";
     public static final String BEER_2_UPC = "0631234300019";
@@ -24,40 +24,40 @@ public class BeerLoader implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-if(beerRepository==null){
+        if (beerRepository == null) {
 
-    Beer b1 = Beer.builder()
-            .beerName("Mango Bobs")
-            .beerStyle(BeerStyleEnum.IPA.name())
-            .minOnHand(12)
-            .quantityToBrew(200)
-            .price(new BigDecimal("12.95"))
-            .upc(BEER_1_UPC)
-            .build();
+            Beer b1 = Beer.builder()
+                    .beerName("Mango Bobs")
+                    .beerStyle(BeerStyleEnum.IPA.name())
+                    .minOnHand(12)
+                    .quantityToBrew(200)
+                    .price(new BigDecimal("12.95"))
+                    .upc(BEER_1_UPC)
+                    .build();
 
-    Beer b2 = Beer.builder()
-            .beerName("Galaxy Cat")
-            .beerStyle(BeerStyleEnum.PALE_ALE.name())
-            .minOnHand(12)
-            .quantityToBrew(200)
-            .price(new BigDecimal("12.95"))
-            .upc(BEER_2_UPC)
-            .build();
+            Beer b2 = Beer.builder()
+                    .beerName("Galaxy Cat")
+                    .beerStyle(BeerStyleEnum.PALE_ALE.name())
+                    .minOnHand(12)
+                    .quantityToBrew(200)
+                    .price(new BigDecimal("12.95"))
+                    .upc(BEER_2_UPC)
+                    .build();
 
-    Beer b3 = Beer.builder()
-            .beerName("Pinball Porter")
-            .beerStyle(BeerStyleEnum.PALE_ALE.name())
-            .minOnHand(12)
-            .quantityToBrew(200)
-            .price(new BigDecimal("12.95"))
-            .upc(BEER_3_UPC)
-            .build();
+            Beer b3 = Beer.builder()
+                    .beerName("Pinball Porter")
+                    .beerStyle(BeerStyleEnum.PALE_ALE.name())
+                    .minOnHand(12)
+                    .quantityToBrew(200)
+                    .price(new BigDecimal("12.95"))
+                    .upc(BEER_3_UPC)
+                    .build();
 
-    beerRepository.save(b1);
-    beerRepository.save(b2);
-    beerRepository.save(b3);
-}
+            beerRepository.save(b1);
+            beerRepository.save(b2);
+            beerRepository.save(b3);
+        }
 
-System.out.println("beers saved");
+        System.out.println("beers saved");
     }
 }

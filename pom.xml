@@ -52,6 +52,20 @@
             <scope>runtime</scope>
             <optional>true</optional>
         </dependency>
+        <!-- Adding Eh chache to the project
+        -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-cache</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>javax.cache</groupId>
+            <artifactId>cache-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.ehcache</groupId>
+            <artifactId>ehcache</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -155,7 +169,7 @@
                             <goal>process-asciidoc</goal>
                         </goals>
                         <configuration>
-                            <backend>html5 </backend>
+                            <backend>html5</backend>
                             <doctype>book</doctype>
                         </configuration>
                     </execution>
@@ -179,12 +193,16 @@
                     <execution>
                         <id>copy-resources</id>
                         <phase>prepare-package</phase>
-                        <goals><goal>copy-resources</goal></goals>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
                         <configuration>
                             <outputDirectory>${project.build.outputDirectory}/static/docs
                             </outputDirectory>
                             <resources>
-                                <resource><directory>${project.build.directory}/generated-docs</directory></resource>
+                                <resource>
+                                    <directory>${project.build.directory}/generated-docs</directory>
+                                </resource>
                             </resources>
                         </configuration>
                     </execution>
