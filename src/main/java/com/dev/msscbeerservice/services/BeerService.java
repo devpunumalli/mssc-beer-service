@@ -1,5 +1,6 @@
 package com.dev.msscbeerservice.services;
 
+import com.dev.msscbeerservice.domain.Beer;
 import com.dev.msscbeerservice.web.model.BeerDto;
 import com.dev.msscbeerservice.web.model.BeerPagedList;
 import com.dev.msscbeerservice.web.model.BeerStyleEnum;
@@ -15,4 +16,6 @@ public interface BeerService {
     BeerDto updateBeer(UUID beerId, BeerDto beerDto);
 
     BeerPagedList listBeers(String beerName, BeerStyleEnum beerStyle, Pageable of, Boolean showInventoryOnHand);
+
+    BeerDto getBeerByUpc(String upc);
 }

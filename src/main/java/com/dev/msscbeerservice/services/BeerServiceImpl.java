@@ -94,4 +94,10 @@ if(showInventoryOnHand){
 }
         return beerPagedList;
     }
+
+    @Override
+    @Cacheable(cacheNames = "upcCache")
+    public BeerDto getBeerByUpc(String upc) {
+        return beerMapper.toBeerDto(beerRepository.findByUpc(upc));
+    }
 }
