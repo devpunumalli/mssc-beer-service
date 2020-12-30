@@ -14,12 +14,13 @@ import org.springframework.web.client.RestTemplate;
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
+
 @Slf4j
 @Component
-@ConfigurationProperties(prefix = "sfg.brewery",ignoreUnknownFields = false)
+@ConfigurationProperties(prefix = "sfg.brewery", ignoreUnknownFields = false)
 public class BeerInventoryServiceRestTempImpl implements BeerInventoryService {
 
-    private static final String INVENTORY_PATH ="/api/v1/beer/{beerId}/inventory" ;
+    private static final String INVENTORY_PATH = "/api/v1/beer/{beerId}/inventory";
 
     public void setBeerInventoryServiceHost(String beerInventoryServiceHost) {
         this.beerInventoryServiceHost = beerInventoryServiceHost;
@@ -29,14 +30,15 @@ public class BeerInventoryServiceRestTempImpl implements BeerInventoryService {
 
 
     private String beerInventoryServiceHost;
+
     @Override
     public Integer getOnHandQuantity(UUID beerId) {
 
         log.debug("Calling BeerInventory Service");
 
         ResponseEntity<List<BeerInventoryDto>> responseEntity = restTemplate.exchange(beerInventoryServiceHost + INVENTORY_PATH, HttpMethod.GET, null,
-                                                                                new ParameterizedTypeReference<List<BeerInventoryDto>>() {
-                                                                                }, (Object) beerId);
+                                                                                      new ParameterizedTypeReference<List<BeerInventoryDto>>() {
+                                                                                      }, (Object) beerId);
         int onHand = Objects.requireNonNull(responseEntity.getBody())
                 .stream()
                 .mapToInt(BeerInventoryDto::getQuantityOnHand)
@@ -45,7 +47,7 @@ public class BeerInventoryServiceRestTempImpl implements BeerInventoryService {
         return onHand;
     }
 
-    public BeerInventoryServiceRestTempImpl(RestTemplateBuilder restTemplateBuilder){
-        this.restTemplate=restTemplateBuilder.build();
+    public BeerInventoryServiceRestTempImpl(RestTemplateBuilder restTemplateBuilder) {
+        this.restTemplate = restTemplateBuilder.build();
     }
 }
