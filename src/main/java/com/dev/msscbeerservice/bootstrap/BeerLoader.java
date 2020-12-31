@@ -13,6 +13,9 @@ import java.util.UUID;
 public class BeerLoader implements CommandLineRunner {
 
     public static final UUID BEER_ID_1 = UUID.fromString("0a818933-087d-47f2-ad83-2f986ed087eb");
+    public static final UUID BEER_ID_2 = UUID.fromString("a712d914-61ea-4623-8bd0-32c0f6545bfd");
+    public static final UUID BEER_ID_3 = UUID.fromString("026cc3c8-3a0c-4083-a05b-e908048c1b08");
+
     private final BeerRepository beerRepository;
     public static final String BEER_1_UPC = "0631234200036";
     public static final String BEER_2_UPC = "0631234300019";
@@ -24,10 +27,10 @@ public class BeerLoader implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        if (beerRepository == null) {
+        if (beerRepository != null && beerRepository.count()==0) {
 
             Beer b1 = Beer.builder()
-                    .beerName("Mango Bobs")
+                    .beerName("Mango Bobs").id(BEER_ID_1)
                     .beerStyle(BeerStyleEnum.IPA.name())
                     .minOnHand(12)
                     .quantityToBrew(200)
@@ -36,7 +39,7 @@ public class BeerLoader implements CommandLineRunner {
                     .build();
 
             Beer b2 = Beer.builder()
-                    .beerName("Galaxy Cat")
+                    .beerName("Galaxy Cat").id(BEER_ID_2)
                     .beerStyle(BeerStyleEnum.PALE_ALE.name())
                     .minOnHand(12)
                     .quantityToBrew(200)
@@ -45,7 +48,7 @@ public class BeerLoader implements CommandLineRunner {
                     .build();
 
             Beer b3 = Beer.builder()
-                    .beerName("Pinball Porter")
+                    .beerName("Pinball Porter").id(BEER_ID_3)
                     .beerStyle(BeerStyleEnum.PALE_ALE.name())
                     .minOnHand(12)
                     .quantityToBrew(200)
