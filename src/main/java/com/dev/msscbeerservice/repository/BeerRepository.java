@@ -1,16 +1,14 @@
 package com.dev.msscbeerservice.repository;
 
 import com.dev.msscbeerservice.domain.Beer;
-import com.dev.msscbeerservice.web.model.BeerPagedList;
 import com.dev.msscbeerservice.web.model.BeerStyleEnum;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.UUID;
 
-public interface BeerRepository extends PagingAndSortingRepository<Beer, UUID> {
+public interface BeerRepository extends JpaRepository<Beer, UUID> {
     Page<Beer> findAllByBeerNameAndBeerStyle(String beerName, BeerStyleEnum beerStyle, Pageable pageRequest);
 
     Page<Beer> findByBeerName(String beerName, Pageable pageRequest);
