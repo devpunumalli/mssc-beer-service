@@ -1,9 +1,9 @@
-package com.dev.msscbeerservice.services;
+package com.dev.msscbeerservice.services.brewing;
 
 
 import com.dev.msscbeerservice.config.JmsConfig;
 import com.dev.msscbeerservice.domain.Beer;
-import com.dev.msscbeerservice.event.BeerEvent;
+import com.dev.msscbeerservice.event.BrewBeerEvent;
 import com.dev.msscbeerservice.repository.BeerRepository;
 import com.dev.msscbeerservice.services.inventory.BeerInventoryService;
 import com.dev.msscbeerservice.web.mapper.BeerMapper;
@@ -38,7 +38,7 @@ public class BrewingService {
 
       if(onHandQuantity<=beer.getMinOnHand()){
           //send Beer event
-          jmsTemplate.convertAndSend(JmsConfig.BREWING_REQUEST_QUEUE,new BeerEvent(beerMapper.toBeerDto(beer)));
+          jmsTemplate.convertAndSend(JmsConfig.BREWING_REQUEST_QUEUE,new BrewBeerEvent(beerMapper.toBeerDto(beer)));
 
       }
         });
